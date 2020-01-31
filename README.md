@@ -3,7 +3,9 @@ CONFIGURAR LIRC 0.9.4c-9 NO RASPBERRY STRETCH KERNEL 4.19
 
 1° INSTALAR O LIRC:
 Instalação manual do lirc 0.9.4c-9 no raspbian stretch:
-Sudo dpkg –i <PACOTE>
+```
+sudo dpkg –i <PACOTE>
+```
 Siga a seguinte ordem de instalação dos pacotes:
 - [1]    libusb-0.1-4_0.1.12-30_armhf.deb
 - [2]    libftdi1-2_1.3-2+b2_armhf.deb
