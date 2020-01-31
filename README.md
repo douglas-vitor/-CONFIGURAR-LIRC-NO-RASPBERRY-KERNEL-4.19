@@ -29,6 +29,7 @@ dtoverlay=gpio-ir-tx,gpio_pin=12
 gpio-ir = Para o pino de recebimento de dados(RECEPTOR IR)
 
 gpio-ir-tx = Para o pino de saída de dados(LED IR)
+*adapte as configurações as suas necessidades.
 *Salve e feche o arquivo.
 
 3° Agora vamos configurar os arquivos do lirc, vamos editar o arquivo /etc/lirc/lirc_options.conf, procure pelas linhas “Driver = ...” e “Device =  ....” e deixe da seguinte forma:
