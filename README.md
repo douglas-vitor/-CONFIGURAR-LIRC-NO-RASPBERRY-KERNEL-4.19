@@ -1,7 +1,7 @@
 # CONFIGURAR-LIRC-NO-RASPBERRY-KERNEL-4.19
-CONFIGURAR LIRC 0.9.4c-9 NO RASPBERRY STRETCH KERNEL 4.19
+###### CONFIGURAR LIRC 0.9.4c-9 NO RASPBERRY STRETCH KERNEL 4.19
 
-1° INSTALAR O LIRC:
+###### 1° INSTALAR O LIRC:
 Instalação manual do lirc 0.9.4c-9 no raspbian stretch:
 ```
 sudo dpkg –i <PACOTE>
@@ -17,53 +17,55 @@ Instalação direta pelo terminal:
 ```
 sudo apt-get install lirc
 ```
-2° Agora edite o arquivo /boot/config.txt , onde vamos fazer os módulos do lirc iniciar no boot, configurando os devidos pinos GPIO usados.
+###### 2° Edição do arquivo /boot/config.txt
+*Agora edite o arquivo /boot/config.txt , onde vamos fazer os módulos do lirc iniciar no boot, configurando os devidos pinos GPIO usados.*
 ```
 sudo nano /boot/config.txt
 ```
-Procure pela linha “#dtoverlay=lirc-rpi”, você pode excluí-la e deixar da seguinte forma, ou deixa-la comentada e adicionar as seguintes linhas no arquivo:
+*Procure pela linha “#dtoverlay=lirc-rpi”, você pode excluí-la e deixar da seguinte forma, ou deixa-la comentada e adicionar as seguintes linhas no arquivo:*
 ```
 dtoverlay=gpio-ir,gpio_pin=6
 dtoverlay=gpio-ir-tx,gpio_pin=12
 ```
-gpio-ir = Para o pino de recebimento de dados(RECEPTOR IR)
+**gpio-ir** = Para o pino de recebimento de dados (RECEPTOR IR)
 
-gpio-ir-tx = Para o pino de saída de dados(LED IR)
+**gpio-ir-tx** = Para o pino de saída de dados (LED IR)
 
-*Adapte as configurações as suas necessidades.
+*Adapte as configurações as suas necessidades.*
 
-*Salve e feche o arquivo.
+*Salve e feche o arquivo.*
 
-3° Agora vamos configurar os arquivos do lirc, vamos editar o arquivo /etc/lirc/lirc_options.conf, procure pelas linhas “Driver = ...” e “Device =  ....” e deixe da seguinte forma:
+###### 3° Configuração do arquivo /etc/lirc/lirc_options.conf
+Agora vamos configurar os arquivos do lirc, vamos editar o arquivo /etc/lirc/lirc_options.conf, procure pelas linhas “Driver = ...” e “Device =  ....” e deixe da seguinte forma:
 ```
 Driver = default
 Device = /dev/lirc0
 ```
-*Salve e feche o arquivo.
+*Salve e feche o arquivo.*
 
-### Não edite ou adicione o arquivo hardware.conf, outros tutorias podem mencionar este aquivo em /etc/lirc/hardware.conf, o lirc na versão 0.9.4 não utiliza mais este arquivo.
+## Não edite ou adicione o arquivo hardware.conf, outros tutorias podem mencionar este arquivo em /etc/lirc/hardware.conf, o lirc na versão 0.9.4 não utiliza mais este arquivo.
 
-4° TESTAR
-Vamos primeiro reiniciar o serviço do lirc para evitar erros:
+###### 4° TESTAR
+*Vamos primeiro reiniciar o serviço do lirc para evitar erros:*
 ```
 sudo service lircd restart
 ```
-Agora vamos reiniciar o respberry:
+*Agora vamos reiniciar o respberry:*
 ```
 sudo reboot
 ```
 
-*Após reiniciado, vamos procurar pelas mensagens do boot relacionadas ao lirc:
+*Após reiniciado, vamos procurar pelas mensagens do boot relacionadas ao lirc:*
 ```
 dmesg | grep lirc
 ```
-*Agora vamos listar os device do lirc
+*Agora vamos listar os device do lirc*
 ```
 ls –l /dev/lirc*
 ```
 
-*se todos os comandos tiveram saídas positivas, esta tudo certo.
-*Para testar se o receptor esta ok, use o comando mode2 para que ele leia pulsos ir, então basta executar o comando a seguir e apertar botões de algum controle IR mirando no receiver IR.
+*se todos os comandos tiveram saídas positivas, esta tudo certo.*
+*Para testar se o receptor esta ok, use o comando mode2 para que ele leia pulsos ir, então basta executar o comando a seguir e apertar botões de algum controle IR mirando no receiver IR.*
 ```
 mode2
 ```
