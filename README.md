@@ -36,7 +36,7 @@ dtoverlay=gpio-ir-tx,gpio_pin=12
 *Salve e feche o arquivo.*
 
 ###### 3° Configuração do arquivo /etc/lirc/lirc_options.conf
-Agora vamos configurar os arquivos do lirc, vamos editar o arquivo /etc/lirc/lirc_options.conf, procure pelas linhas “Driver = ...” e “Device =  ....” e deixe da seguinte forma:
+*Agora vamos configurar os arquivos do lirc, vamos editar o arquivo /etc/lirc/lirc_options.conf, procure pelas linhas “Driver = ...” e “Device =  ....” e deixe da seguinte forma:*
 ```
 Driver = default
 Device = /dev/lirc0
@@ -64,7 +64,7 @@ dmesg | grep lirc
 ls –l /dev/lirc*
 ```
 
-*se todos os comandos tiveram saídas positivas, esta tudo certo.*
+*Se todos os comandos tiveram saídas positivas, esta tudo certo.*
 *Para testar se o receptor esta ok, use o comando mode2 para que ele leia pulsos ir, então basta executar o comando a seguir e apertar botões de algum controle IR mirando no receiver IR.*
 ```
 mode2
